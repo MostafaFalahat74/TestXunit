@@ -1,4 +1,5 @@
 
+using Selenium.POM.Modals;
 using Selenium.POM.Pages;
 using System;
 using Xunit;
@@ -41,7 +42,7 @@ namespace Selenium.POM
 
             var userDetails = dashboard.GoToUserDetails();
 
-            var editPersonalInfoModal = userDetails.GotToEditPersonalInfo("profileInfo");
+            var editPersonalInfoModal = userDetails.GotToEditPersonalInfo<EditPersonalInfoModal>("profileInfo");
 
             var choice = string.Empty;
 

@@ -2,6 +2,7 @@
 using Selenium.POM;
 using Selenium.POM.Pages;
 using System;
+using TestXunit.Modals;
 using Xunit;
 namespace TestXunit
 {
@@ -41,12 +42,15 @@ namespace TestXunit
             var dashboard = GetObjectToScenarioContext<DashboardPage>("pages-dashboard");
 
             var userDetails = dashboard.GoToUserDetails();
-            // var userDetails = dashboard.GoToUserDetails("locationInfo");
+            var editLocationInfoModal = userDetails.GotToEditPersonalInfo<EditLocationInfoModal>("locationInfoo");
+            editLocationInfoModal.ChangeTelephoneNumber(toTelephoneNumber);
+            SetObjectToScenarioContext("pages-userDetails", userDetails);
         }
 
         private void Angah_Telephone_Karbar_Beh_toTelephoneNumber_Taghir_Mikonad(string toTelephoneNumber)
         {
-            throw new NotImplementedException();
+            var userDetails = GetObjectToScenarioContext<UserDetailsPage>("pages-userDetails");
+            Assert.Equal(toTelephoneNumber, userDetails.TelephoneNumber);
         }
     }
 }

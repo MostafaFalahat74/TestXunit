@@ -17,6 +17,8 @@ namespace Selenium.POM.Modals
 
         private IWebElement femaleRadioButton;
 
+
+
         public EditPersonalInfoModal(IWebDriver driver, WebDriverWait wait)
         {
             var searchContext = GetSearchContext(driver, wait);
